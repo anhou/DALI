@@ -19,7 +19,7 @@ import nvidia.dali.types as types
 import numpy as np
 from timeit import default_timer as timer
 
-image_folder = "/data/dali/benchmark/benchmark_images"
+image_folder = "/home/andrew/imagenet/flower_photos/daisy/"
 
 def read_jpegs(folder):
     with open(folder + "/image_list.txt", 'r') as file:
@@ -134,11 +134,11 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--batch-sizes', default = [128],
                         help='Comma separated list of batch sizes to run')
-    parser.add_argument('--thread-counts', default = [1, 2, 3, 4],
+    parser.add_argument('--thread-counts', default = [1,2,4,8],
                         help='Comma separated list of thread counts')
     parser.add_argument('--executors', default = [2],
                         help='List of executors to run')
-    parser.add_argument('--num-iters', type=int, default=100,
+    parser.add_argument('--num-iters', type=int, default=1000,
                         help='Number of iterations to run')
     return parser.parse_args()
 
